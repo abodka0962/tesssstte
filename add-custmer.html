@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>إضافة عميل - تيجان للخياطة</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0A2463;
+      --secondary: #D4AF37;
+      --success: #4BB543;
+      --light: #F5F5F5;
+      --dark: #212529;
+    }
+
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+
+    .dashboard {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .sidebar-header {
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .sidebar-header h3 {
+      color: var(--secondary);
+      margin: 0;
+    }
+
+    .sidebar-menu {
+      padding: 20px 0;
+    }
+
+    .sidebar-menu a {
+      color: white;
+      padding: 12px 20px;
+      display: block;
+      text-decoration: none;
+      transition: all 0.3s;
+      border-right: 3px solid transparent;
+    }
+
+    .sidebar-menu a:hover,
+    .sidebar-menu a.active {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-right: 3px solid var(--secondary);
+    }
+
+    .sidebar-menu i {
+      margin-left: 10px;
+      width: 20px;
+      text-align: center;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 30px;
+      background-color: #f8f9fa;
+    }
+
+    .page-title h1 {
+      color: var(--primary);
+      margin-bottom: 30px;
+    }
+
+    .form-container {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--dark);
+      font-weight: 500;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ced4da;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: #081f4e;
+    }
+
+    .form-actions {
+      margin-top: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="dashboard">
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <h3><i class="fas fa-crown"></i> تيجان للخياطة</h3>
+      </div>
+      <div class="sidebar-menu">
+        <a href="index.html"><i class="fas fa-home"></i> الرئيسية</a>
+        <a href="custmers.html" class="active"><i class="fas fa-users"></i> العملاء</a>
+        <a href="orders.html"><i class="fas fa-scroll"></i> الطلبات</a>
+        <a href="sales.html"><i class="fas fa-money-bill-wave"></i> المبيعات</a>
+        <a href="expenses.html"><i class="fas fa-wallet"></i> المصروفات</a>
+        <a href="inventory.html"><i class="fas fa-boxes"></i> المخزن</a>
+        <a href="reports.html"><i class="fas fa-chart-line"></i> التقارير</a>
+        <a href="settings.html"><i class="fas fa-cog"></i> الإعدادات</a>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <div class="page-title">
+        <h1><i class="fas fa-user-plus"></i> إضافة عميل جديد</h1>
+      </div>
+
+      <div class="form-container">
+        <form action="#" method="post">
+          <div class="form-group">
+            <label for="name">اسم العميل</label>
+            <input type="text" id="name" name="name" placeholder="ادخل اسم العميل" required>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">رقم الجوال</label>
+            <input type="tel" id="phone" name="phone" placeholder="05XXXXXXXX" required>
+          </div>
+
+          <div class="form-group">
+            <label for="address">العنوان</label>
+            <input type="text" id="address" name="address" placeholder="الحي - المدينة">
+          </div>
+
+          <div class=" <form action="save_customer.php" method="post">">
+            <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> حفظ العميل</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

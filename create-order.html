@@ -1,0 +1,237 @@
+
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>إنشاء طلب جديد - تيجان للخياطة</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<style>
+    body {
+      font-family: 'Tajawal', sans-serif;
+      margin: 0;
+      background-color: #f8f9fa;
+    }
+    .dashboard {
+      display: flex;
+    }
+    .sidebar {
+      width: 250px;
+      background-color: #0A2463;
+      color: white;
+      min-height: 100vh;
+    }
+    .sidebar-header {
+      text-align: center;
+      padding: 20px;
+      background-color: rgba(0,0,0,0.1);
+    }
+    .sidebar-header h3 {
+      color: #D4AF37;
+      margin: 0;
+    }
+    .sidebar-menu a {
+      display: block;
+      padding: 15px 20px;
+      color: white;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .sidebar-menu a:hover,
+    .sidebar-menu a.active {
+      background-color: rgba(255,255,255,0.1);
+    }
+    .main-content {
+      flex: 1;
+      padding: 30px;
+    }
+    form {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      max-width: 800px;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+    input[type="text"],
+    input[type="number"],
+    input[type="date"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-family: inherit;
+    }
+    textarea {
+      height: 100px;
+      resize: vertical;
+    }
+    .measurements {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .measure-item input {
+      width: 100%;
+      text-align: center;
+      padding: 5px;
+    }
+    .main-btn, .print-btn {
+      background-color: #0A2463;
+      color: white;
+      padding: 10px 20px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 1rem;
+      margin-left: 10px;
+    }
+    .main-btn:hover, .print-btn:hover {
+      background-color: #081d4a;
+    }
+    .toast {
+      display: none;
+      margin-top: 15px;
+      padding: 10px;
+      background-color: #28a745;
+      color: white;
+      border-radius: 5px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+<div class="dashboard">
+<div class="sidebar">
+<div class="sidebar-header">
+<h3><i class="fas fa-crown"></i> تيجان للخياطة</h3>
+</div>
+<div class="sidebar-menu">
+<a href="index.html"><i class="fas fa-home"></i> لوحة التحكم</a>
+<a href="custmers.html"><i class="fas fa-users"></i> العملاء</a>
+<a href="orders.html"><i class="fas fa-scroll"></i> الطلبات</a>
+<a href="sales.html"><i class="fas fa-money-bill-wave"></i> المبيعات</a>
+<a href="expenses.html"><i class="fas fa-wallet"></i> المصروفات</a>
+<a href="inventory.html"><i class="fas fa-boxes"></i> المخزن</a>
+<a href="reports.html"><i class="fas fa-chart-line"></i> التقارير</a>
+<a href="settings.html"><i class="fas fa-cog"></i> الإعدادات</a>
+</div>
+</div>
+<div class="main-content">
+<h1><i class="fas fa-plus"></i> إنشاء طلب جديد</h1>
+<form id="newOrderForm"><datalist id="clientsList"><option value="أحمد محمد"></option><option value="خالد عبدالله"></option><option value="سلمان فهد"></option><option value="فهد العتيبي"></option></datalist>
+<div class="form-group">
+<label for="clientName">اسم العميل:</label>
+<input id="clientName" list="clientsList" placeholder="ابحث عن اسم العميل..." required="" style="width: 100%; font-size: 0.9rem; padding: 6px;" type="text"/>
+</div>
+<div class="form-group">
+<label for="dressCount">عدد الأثواب:</label>
+<input id="dressCount" required="" style="width: 100%; font-size: 0.9rem; padding: 6px;" type="number"/>
+</div>
+<div class="form-group">
+<label for="deliveryDate">تاريخ الاستلام:</label>
+<input dir="rtl" id="deliveryDate" required="" style="width: 100%; font-size: 0.9rem; padding: 6px;" type="date"/>
+</div>
+<div class="form-group">
+<label for="neckType">نوع الرقبة:</label>
+<select id="neckType" required="" style="width: 100%; font-size: 0.9rem; padding: 6px;">
+<option value="قلاب">قلاب</option>
+<option value="عادي">عادي</option>
+<option value="سادة">سادة</option>
+</select>
+</div>
+<div class="form-group">
+<label for="sleeveType">نوع الكم:</label>
+<select id="sleeveType" required="" style="width: 100%; font-size: 0.9rem; padding: 6px;">
+<option value="سادة">سادة</option>
+<option value="مقوى">مقوى</option>
+<option value="قماش">قماش</option>
+</select>
+</div>
+<div class="form-group">
+<label for="pocketType">نوع الجيب:</label>
+<select id="pocketType" required="" style="width: 100%; font-size: 0.9rem; padding: 6px;">
+<option value="مربع">مربع</option>
+<option value="مشطوف">مشطوف</option>
+</select>
+</div>
+<div class="form-group">
+<label for="buttonType">نوع الأزرار:</label>
+<select id="buttonType" required="" style="width: 100%; font-size: 0.9rem; padding: 6px;">
+<option value="مخفي">مخفي</option>
+<option value="ظاهر">ظاهر</option>
+<option value="سحاب مخفي">سحاب مخفي</option>
+<option value="سحاب بأزرار خارجية">سحاب بأزرار خارجية</option>
+</select>
+</div>
+<div class="form-group">
+<label for="buttonEndType">نهاية مظهر الأزرار:</label>
+<select id="buttonEndType" required="" style="width: 100%; font-size: 0.9rem; padding: 6px;">
+<option value="مثلث">مثلث</option>
+<option value="مربع">مربع</option>
+</select>
+</div>
+<h3><i class="fas fa-ruler-combined"></i> القياسات</h3>
+<div class="measurements">
+<div class="measure-item">
+<label for="chest">الصدر</label>
+<input id="chest" placeholder="سم" style="width: 100%; font-size: 0.9rem; padding: 6px;" type="number"/>
+</div>
+<div class="measure-item">
+<label for="waist">الخصر</label>
+<input id="waist" placeholder="سم" style="width: 100%; font-size: 0.9rem; padding: 6px;" type="number"/>
+</div>
+<div class="measure-item">
+<label for="height">الطول</label>
+<input id="height" placeholder="سم" style="width: 100%; font-size: 0.9rem; padding: 6px;" type="number"/>
+</div>
+<div class="measure-item">
+<label for="shoulder">الكتف</label>
+<input id="shoulder" placeholder="سم" style="width: 100%; font-size: 0.9rem; padding: 6px;" type="number"/>
+</div>
+<div class="measure-item">
+<label for="sleeve">الكم</label>
+<input id="sleeve" placeholder="سم" style="width: 100%; font-size: 0.9rem; padding: 6px;" type="number"/>
+</div>
+<div class="measure-item">
+<label for="neck">الرقبة</label>
+<input id="neck" placeholder="سم" style="width: 100%; font-size: 0.9rem; padding: 6px;" type="number"/>
+</div>
+</div>
+<div class="form-group">
+<label for="notes">ملاحظات إضافية:</label>
+<textarea id="notes" style="width: 100%; font-size: 0.9rem; padding: 6px;"></textarea>
+</div>
+<button class="main-btn" type="submit"><i class="fas fa-save"></i> حفظ الطلب</button>
+<button class="print-btn" onclick="window.print()" type="button"><i class="fas fa-print"></i> طباعة الطلب</button>
+<div class="toast" id="toast">تم حفظ الطلب بنجاح!</div>
+</form>
+</div>
+</div>
+<script>
+  document.getElementById('newOrderForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    document.getElementById('toast').style.display = 'block';
+    setTimeout(() => {
+      document.getElementById('toast').style.display = 'none';
+    }, 3000);
+    // محاكاة حفظ الطلب
+    console.log("Order saved to /data folder (محاكاة)");
+  });
+</script>
+</body>
+</html>

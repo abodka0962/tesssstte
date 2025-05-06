@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تيجان للخياطة - الطلبات</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #0A2463;
+      --secondary: #D4AF37;
+      --light: #F5F5F5;
+      --dark: #212529;
+    }
+
+    body {
+      font-family: 'Tajawal', sans-serif;
+      margin: 0;
+      background-color: #f8f9fa;
+    }
+
+    .dashboard {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .sidebar-header {
+      padding: 20px;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .sidebar-header h3 {
+      color: var(--secondary);
+      margin: 0;
+    }
+
+    .sidebar-menu a {
+      display: block;
+      padding: 15px 20px;
+      color: white;
+      text-decoration: none;
+      border-right: 3px solid transparent;
+      transition: 0.3s;
+    }
+
+    .sidebar-menu a:hover,
+    .sidebar-menu a.active {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-right: 3px solid var(--secondary);
+    }
+
+    .sidebar-menu i {
+      margin-left: 10px;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 30px;
+    }
+
+    .main-content h1 {
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+
+    .orders-section {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      overflow: hidden;
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .orders-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .orders-header h2 {
+      color: var(--primary);
+      margin: 0;
+    }
+
+    .orders-header a {
+      text-decoration: none;
+      background-color: var(--primary);
+      color: white;
+      padding: 10px 15px;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      transition: background-color 0.3s;
+    }
+
+    .orders-header a:hover {
+      background-color: #081d4a;
+    }
+
+    .orders-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .orders-table thead {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .orders-table th, .orders-table td {
+      padding: 15px;
+      text-align: right;
+      border-bottom: 1px solid #eee;
+    }
+
+    .orders-table tbody tr:hover {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard">
+    <!-- الشريط الجانبي -->
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <h3><i class="fas fa-crown"></i> تيجان للخياطة</h3>
+      </div>
+      <div class="sidebar-menu">
+        <a href="index.html"><i class="fas fa-home"></i> لوحة التحكم</a>
+        <a href="custmers.html"><i class="fas fa-users"></i> العملاء</a>
+        <a href="orders.html" class="active"><i class="fas fa-scroll"></i> الطلبات</a>
+        <a href="sales.html"><i class="fas fa-money-bill-wave"></i> المبيعات</a>
+        <a href="expenses.html"><i class="fas fa-wallet"></i> المصروفات</a>
+        <a href="inventory.html"><i class="fas fa-boxes"></i> المخزن</a>
+        <a href="reports.html"><i class="fas fa-chart-line"></i> التقارير</a>
+        <a href="settings.html"><i class="fas fa-cog"></i> الإعدادات</a>
+      </div>
+    </div>
+
+    <!-- المحتوى الرئيسي -->
+    <div class="main-content">
+      <h1><i class="fas fa-scroll"></i> الطلبات</h1>
+
+      <div class="orders-section">
+        <div class="orders-header">
+          <h2><i class="fas fa-list"></i> قائمة الطلبات</h2>
+          <a href="create-order.html"><i class="fas fa-plus"></i> إنشاء طلب جديد</a>
+        </div>
+        <table class="orders-table">
+          <thead>
+            <tr>
+              <th>اسم العميل</th>
+              <th>نوع الطلب</th>
+              <th>الحالة</th>
+              <th>تاريخ الإنشاء</th>
+              <th>الإجراء</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>عبدالله محمد</td>
+              <td>ثوب رسمي</td>
+              <td>جاهز</td>
+              <td>2025-04-28</td>
+              <td><a href="#">عرض</a></td>
+            </tr>
+            <tr>
+              <td>سلمان أحمد</td>
+              <td>جاكيت شتوي</td>
+              <td>قيد التنفيذ</td>
+              <td>2025-04-25</td>
+              <td><a href="#">عرض</a></td>
+            </tr>
+            <tr>
+              <td>فهد العتيبي</td>
+              <td>بدلة عريس</td>
+              <td>تم التسليم</td>
+              <td>2025-04-20</td>
+              <td><a href="#">عرض</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
