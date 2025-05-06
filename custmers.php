@@ -2,15 +2,24 @@
 $dataDir = 'data';
 $customers = [];
 
+// Check if directory exists and handle errors
 if (is_dir($dataDir)) {
     $files = glob($dataDir . '/customer_*.json');
     foreach ($files as $file) {
-        $json = file_get_contents($file);
+        $json = @file_get_contents($file); // Suppress errors and handle them manually
+        if ($json === false) {
+            error_log("Error reading file: $file");
+            continue;
+        }
         $data = json_decode($json, true);
-        if ($data) {
+        if (json_last_error() === JSON_ERROR_NONE) { // Check for JSON parsing errors
             $customers[] = $data;
+        } else {
+            error_log("Invalid JSON in file: $file");
         }
     }
+} else {
+    error_log("Directory $dataDir does not exist.");
 }
 ?>
 
@@ -80,10 +89,10 @@ if (is_dir($dataDir)) {
       <tbody>
         <?php foreach ($customers as $cust): ?>
           <tr>
-            <td><?= htmlspecialchars($cust['name']) ?></td>
-            <td><?= htmlspecialchars($cust['phone']) ?></td>
-            <td><?= htmlspecialchars($cust['address']) ?></td>
-            <td><?= htmlspecialchars($cust['created_at']) ?></td>
+            <td><?= htmlspecialchars($cust['name'] ?? 'غير معروف') ?></td>
+            <td><?= htmlspecialchars($cust['phone'] ?? 'غير معروف') ?></td>
+            <td><?= htmlspecialchars($cust['address'] ?? 'غير معروف') ?></td>
+            <td><?= htmlspecialchars($cust['created_at'] ?? 'غير معروف') ?></td>
           </tr>
         <?php endforeach; ?>
       </tbody>
@@ -93,7 +102,7 @@ if (is_dir($dataDir)) {
   <?php endif; ?>
 
   <div style="text-align:center;">
-    <a class="btn" href="add-custmer.html"><i class="fas fa-user-plus"></i> إضافة عميل جديد</a>
+    <a class="btn" href="add-customer.html"><i class="fas fa-user-plus"></i> إضافة عميل جديد</a>
   </div>
 
 </body>
